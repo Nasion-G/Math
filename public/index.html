@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projekt Matematike</title>
+    <link rel="stylesheet" href="fontawesome/css/all.min.css"> <!-- https://fontawesome.com/ -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet" /> <!-- https://fonts.google.com/ -->
+    <link rel="stylesheet" href="css/tooplate-wave-cafe.css">
+
+     <!-- update the version number as needed -->
+     <script defer src="/__/firebase/9.22.0/firebase-app-compat.js"></script>
+     <!-- include only the Firebase features as you need -->
+     <script defer src="/__/firebase/9.22.0/firebase-auth-compat.js"></script>
+     <script defer src="/__/firebase/9.22.0/firebase-database-compat.js"></script>
+     <script defer src="/__/firebase/9.22.0/firebase-firestore-compat.js"></script>
+     <script defer src="/__/firebase/9.22.0/firebase-functions-compat.js"></script>
+     <script defer src="/__/firebase/9.22.0/firebase-messaging-compat.js"></script>
+     <script defer src="/__/firebase/9.22.0/firebase-storage-compat.js"></script>
+     <script defer src="/__/firebase/9.22.0/firebase-analytics-compat.js"></script>
+     <script defer src="/__/firebase/9.22.0/firebase-remote-config-compat.js"></script>
+     <script defer src="/__/firebase/9.22.0/firebase-performance-compat.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+     <!-- 
+       initialize the SDK after all desired features are loaded, set useEmulator to false
+       to avoid connecting the SDK to running emulators.
+     -->
+     <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+<!--
+Tooplate 2121 Wave Cafe
+https://www.tooplate.com/view/2121-wave-cafe
+-->
+</head>
+<body>
+  <div class="tm-container">
+    <div id="drink" class="tm-page-content">
+            <!-- Drink Menu Page -->
+            <nav class="tm-black-bg tm-drinks-nav">
+              <ul>
+                <li>
+                  <a href="#" class="tm-tab-link active" data-id="tetor">Anketa</a>
+                </li>
+                <li>
+                  <a href="#" class="tm-tab-link" data-id="nentor">Fillimi i një biznesi</a>
+                </li>
+                <li>
+                  <a href="#" class="tm-tab-link active" data-id="projekt">Projekt</a>
+                </li>
+              </ul>
+            </nav>
+            <div id="anketa" class="tm-tab-content">
+              <div class="tm-video-wrapper">
+                <video autoplay muted loop id="tm-video">
+                    <source src="video/autumn.webm" type="video/mp4">
+                </video>
+            </div>
+              <div class="tm-list">
+                <div class="tm-list-item">          
+                  <div class="tm-black-bg tm-list-item-text" style="width: 1500px; font-size: 160%;">
+                    <canvas id="chartFirst" style="width:1400px; margin: auto;"></canvas>
+                    <script>
+                      const xValues31 = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31];
+new Chart("chartFirst", {
+  type: "line",
+  data: {
+    labels: xValues31,
+    datasets: [{
+      fill: false,
+      lineTension: 0,
+      backgroundColor: "white",
+      borderColor: "orange",
+      data: [23,21,22,24,22,21,23,24,22,20,21,22,27,23,26,24,25,28,24,26,27,25,23,24,23,22,21,22,23,24,25]
+    },{
+      fill: false,
+      lineTension: 0,
+      backgroundColor: "white",
+      borderColor: "blue",
+      data: [19,18,17,19,18,19,16,17,18,16,17,17,18,19,19,18,19,16,17,18,19,18,18,17,17,16,17,17,17,17,18]
+    }]
+  },
+  options: {
+    legend: {display: false},
+    scales: {
+      yAxes: [{ticks: {min: 0, max:30}}],
+    }
+  }
+});
+                    </script>
+                    <p class="tm-list-item-description">Në qytetin e Fierit temperatura maksimale kap vlerën 28°C në datën 18, ndërsa temperatura minimale kap vlerën 16°C në datat 7, 10, 18 dhe 26.</p>
+
+                    <p class="tm-list-item-description">Temperatura mesatare maksimale është 23.45°C.<br>
+                      Temperatura mesatare minimale është 17.61°C.<br> Temperatura mesatare gjatë gjithë muajit është 20.53°C.                    </p>
+                      
+                    <p class="tm-list-item-description">Amplituda e datës 1 -> 23-19=4°C<br>Amplituda e datës 15 -> 26-19=7°C<br>Amplituda e datës 30 -> 24-17=7°C<br> Amplituda mujore -> 28-16=12°C</p> 
+                      
+                    <p class="tm-list-item-description">Gjatë këtij muaji temperaturat minimale dhe maksimale kanë qenë relativisht afër me njëra-tjetrën. Temperaturat maksimale nuk uleshin poshtë 20°C. Temperaturat minimale qëndronin midis 16°C dhe 19°C. Ky muaj ka pasur vlera të temperaturave relativisht të përafërta me vitet e tjera.</p>
+                  </div>
+                </div>
+              </div>
+            </div> 
+            <div id="biznes" class="tm-tab-content">
+              <div class="tm-video-wrapper">
+                <video autoplay muted loop id="tm-video" width="1920" height="1080">
+                    <source src="video/nov.webm" type="video/mp4">
+                </video>
+            </div>
+              <div class="tm-list">
+                <div class="tm-list-item">          
+                  <div class="tm-black-bg tm-list-item-text" style="width: 1500px; font-size: 160%;">
+                    <canvas id="chartSecond" style="width:1400px; margin: auto;"></canvas>
+                    <script>
+const xValues30 = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30];
+
+
+new Chart("chartSecond", {
+  type: "line",
+  data: {
+    labels: xValues30,
+    datasets: [{
+      fill: false,
+      lineTension: 0,
+      backgroundColor: "white",
+      borderColor: "orange",
+      data: [19,18,20,21,19,18,17,18,19,18,19,19,20,18,20,19,19,20,19,16,15,16,16,15,15,15,14,13,14,15]
+    },{
+      fill: false,
+      lineTension: 0,
+      backgroundColor: "white",
+      borderColor: "blue",
+      data: [13,12,10,11,10,11,10,9,8,9,8,9,7,10,9,8,7,8,9,8,9,8,8,7,5,5,7,6,4,7]
+    }]
+  },
+  options: {
+    legend: {display: false},
+    scales: {
+      yAxes: [{ticks: {min: 0, max:30}}],
+    }
+  }
+});
+                    </script>
+                    <p class="tm-list-item-description">Në qytetin e Fierit temperatura maksimale kap vlerën 21°C në datën 4, ndërsa temperatura minimale kap vlerën 4°C në datën 29.</p>
+
+                    <p class="tm-list-item-description">Temperatura mesatare maksimale është 17.47°C.<br>
+                    Temperatura mesatare minimale është 8.4°C.<br> Temperatura mesatare gjatë gjithë muajit është 12.94°C.</p>
+                      
+                    <p class="tm-list-item-description">Amplituda e datës 1 -> 19-13=6°C<br>Amplituda e datës 15 -> 20-9=11°C<br>Amplituda e datës 30 -> 15-7=8°C <br> Amplituda mujore -> 21-4=17°C</p> 
+                      
+                    <p class="tm-list-item-description">Gjatë këtij muaji temperaturat minimale dhe maksimale kanë qenë pak larg me njëra tjetrën. Temperaturat maksimale uleshin me sa më shumë ditë kalonin. 
+                      Temperaturat minimale ndoqën ato maksimale me uljen e tyre. Ky muaj ka pasur vlera të temperaturave relativisht të përafërta me vitet e tjera. </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="projekt" class="tm-tab-content">
+              <div class="tm-video-wrapper">
+                <video autoplay muted loop id="tm-video" width="1920" height="1080">
+                    <source src="video/may.mp4" type="video/mp4">
+                </video>
+            </div>
+              <div class="tm-list">
+                <div class="tm-list-item">          
+                  <div class="tm-black-bg tm-list-item-text" style="width: 1500px; font-size: 160%; text-align: center;">
+                    <h1><b>Projekt</b></h1>
+                    <p class="tm-list-item-description">Punuar nga:<br>
+                      Nasion Golloshi<br>
+                      Arkedjonus Troka<br>
+                      Milena Meço<br>
+                      Mirela Sfira</p>
+
+                    <p class="tm-list-item-description"></p>
+                      
+                    <p class="tm-list-item-description"></p>
+                      
+                    <p class="tm-list-item-description"></p>
+                  </div>
+                </div>
+              </div>
+            </div> 
+            <!-- end Drink Menu Page -->
+  </div>
+    <div class="tm-row">
+      <!-- Site Header -->
+      <div class="tm-left">
+        <div class="tm-left-inner">
+          <a href="#drink" class="tm-page-link active" style="color: rgba(0,0,0,0); width: 0px; height: 0px;">
+                </a>
+          
+        </div>        
+      </div>
+      <div class="tm-right">
+        <main class="tm-main">
+          
+
+          <!-- About Us Page -->
+          <div id="about" class="tm-page-content">
+            <div class="tm-black-bg tm-mb-20 tm-about-box-1">              
+              <h2 class="tm-text-primary tm-about-header">About Wave Cafe</h2>
+              <div class="tm-list-item tm-list-item-2">                
+                <img src="img/about-1.png" alt="Image" class="tm-list-item-img tm-list-item-img-big">
+                <div class="tm-list-item-text-2">
+                  <p>Wave Cafe is a one-page video background HTML CSS template from Tooplate. You can use this for your business websites.</p>
+                  <p>You can also use this for your client websites which you get paid for your website services. Please tell your friends about us.</p>
+                </div>                
+              </div>
+            </div>
+            <div class="tm-black-bg tm-mb-20 tm-about-box-2">              
+              <div class="tm-list-item tm-list-item-2">                
+                <div class="tm-list-item-text-2">
+                  <h2 class="tm-text-primary">How we began</h2>
+                  <p>If you wish to support us, please contact Tooplate. Thank you. Duis bibendum erat nec ipsum consectetur sodales.</p>                  
+                </div>                
+                <img src="img/about-2.png" alt="Image" class="tm-list-item-img tm-list-item-img-big tm-img-right">                
+              </div>
+              <p>Donec non urna elit. Quisque ut magna in dui mattis iaculis eu finibus metus. Suspendisse vel mi a lacus finibus vehicula vel ut diam. Nam pellentesque, mi quis ullamcorper.</p>
+            </div>
+          </div>
+          <!-- end About Us Page -->
+
+          <!-- Special Items Page -->
+          
+          <!-- end Special Items Page -->
+
+          <!-- Contact Page -->
+          <div id="contact" class="tm-page-content">
+            <div class="tm-black-bg tm-contact-text-container">
+              <h2 class="tm-text-primary">Contact Wave</h2>
+              <p>Wave Cafe Template has a video background. You can use this layout for your websites. Please contact Tooplate's Facebook page. Tell your friends about our website.</p>
+            </div>
+            <div class="tm-black-bg tm-contact-form-container tm-align-right">
+              <form action="" method="POST" id="contact-form">
+                <div class="tm-form-group">
+                  <input type="text" name="name" class="tm-form-control" placeholder="Name" required="" />
+                </div>
+                <div class="tm-form-group">
+                  <input type="email" name="email" class="tm-form-control" placeholder="Email" required="" />
+                </div>        
+                <div class="tm-form-group tm-mb-30">
+                  <textarea rows="6" name="message" class="tm-form-control" placeholder="Message" required=""></textarea>
+                </div>        
+                <div>
+                  <button type="submit" class="tm-btn-primary tm-align-right">
+                    Submit
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+          <!-- end Contact Page -->
+        </main>
+      </div>    
+    </div>
+    <footer class="tm-site-footer">
+      <p class="tm-black-bg tm-footer-text">Punoi: Nasion Golloshi
+    </footer>
+  </div>
+    
+
+  <script src="js/jquery-3.4.1.min.js"></script>    
+  <script>
+
+    function setVideoSize() {
+      const vidWidth = 1920;
+      const vidHeight = 1080;
+      const windowWidth = window.innerWidth;
+      const windowHeight = window.innerHeight;
+      const tempVidWidth = windowHeight * vidWidth / vidHeight;
+      const tempVidHeight = windowWidth * vidHeight / vidWidth;
+      const newVidWidth = tempVidWidth > windowWidth ? tempVidWidth : windowWidth;
+      const newVidHeight = tempVidHeight > windowHeight ? tempVidHeight : windowHeight;
+      const tmVideo = $('#tm-video');
+
+      tmVideo.css('width', newVidWidth);
+      tmVideo.css('height', newVidHeight);
+    }
+
+    function openTab(evt, id) {
+      $('.tm-tab-content').hide();
+      $('#' + id).show();
+      $('.tm-tab-link').removeClass('active');
+      $(evt.currentTarget).addClass('active');
+    }    
+
+    function initPage() {
+      let pageId = location.hash;
+
+      if(pageId) {
+        highlightMenu($(`.tm-page-link[href^="${pageId}"]`)); 
+        showPage($(pageId));
+      }
+      else {
+        pageId = $('.tm-page-link.active').attr('href');
+        showPage($(pageId));
+      }
+    }
+
+    function highlightMenu(menuItem) {
+      $('.tm-page-link').removeClass('active');
+      menuItem.addClass('active');
+    }
+
+    function showPage(page) {
+      $('.tm-page-content').hide();
+      page.show();
+    }
+
+    $(document).ready(function(){
+
+      /***************** Pages *****************/
+
+      initPage();
+
+      $('.tm-page-link').click(function(event) {
+        
+        if(window.innerWidth > 991) {
+          event.preventDefault();
+        }
+
+        highlightMenu($(event.currentTarget));
+        showPage($(event.currentTarget.hash));
+      });
+
+      
+      /***************** Tabs *******************/
+
+      $('.tm-tab-link').on('click', e => {
+        e.preventDefault(); 
+        openTab(e, $(e.target).data('id'));
+      });
+
+      $('.tm-tab-link.active').click(); // Open default tab
+
+
+      /************** Video background *********/
+
+      setVideoSize();
+
+      // Set video background size based on window size
+      let timeout;
+      window.onresize = function(){
+        clearTimeout(timeout);
+        timeout = setTimeout(setVideoSize, 100);
+      };
+
+      // Play/Pause button for video background      
+      const btn = $("#tm-video-control-button");
+
+      btn.on("click", function(e) {
+        const video = document.getElementById("tm-video");
+        $(this).removeClass();
+
+        if (video.paused) {
+          video.play();
+          $(this).addClass("fas fa-pause");
+        } else {
+          video.pause();
+          $(this).addClass("fas fa-play");
+        }
+      });
+    });
+      
+  </script>
+</body>
+</html>
