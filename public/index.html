@@ -21,6 +21,9 @@
      <script defer src="/__/firebase/9.22.0/firebase-remote-config-compat.js"></script>
      <script defer src="/__/firebase/9.22.0/firebase-performance-compat.js"></script>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+     <script type="text/javascript" src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
+     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
      <!-- 
        initialize the SDK after all desired features are loaded, set useEmulator to false
        to avoid connecting the SDK to running emulators.
@@ -38,10 +41,10 @@ https://www.tooplate.com/view/2121-wave-cafe
             <nav class="tm-black-bg tm-drinks-nav">
               <ul>
                 <li>
-                  <a href="#" class="tm-tab-link active" data-id="tetor">Anketa</a>
+                  <a href="#" class="tm-tab-link active" data-id="anketa">Anketa</a>
                 </li>
                 <li>
-                  <a href="#" class="tm-tab-link" data-id="nentor">Fillimi i një biznesi</a>
+                  <a href="#" class="tm-tab-link" data-id="biznes">Fillimi i një biznesi</a>
                 </li>
                 <li>
                   <a href="#" class="tm-tab-link active" data-id="projekt">Projekt</a>
@@ -51,49 +54,73 @@ https://www.tooplate.com/view/2121-wave-cafe
             <div id="anketa" class="tm-tab-content">
               <div class="tm-video-wrapper">
                 <video autoplay muted loop id="tm-video">
-                    <source src="video/autumn.webm" type="video/mp4">
+                    <source src="video/background.mp4" type="video/mp4">
                 </video>
             </div>
               <div class="tm-list">
                 <div class="tm-list-item">          
                   <div class="tm-black-bg tm-list-item-text" style="width: 1500px; font-size: 160%;">
-                    <canvas id="chartFirst" style="width:1400px; margin: auto;"></canvas>
-                    <script>
-                      const xValues31 = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31];
-new Chart("chartFirst", {
-  type: "line",
-  data: {
-    labels: xValues31,
-    datasets: [{
-      fill: false,
-      lineTension: 0,
-      backgroundColor: "white",
-      borderColor: "orange",
-      data: [23,21,22,24,22,21,23,24,22,20,21,22,27,23,26,24,25,28,24,26,27,25,23,24,23,22,21,22,23,24,25]
-    },{
-      fill: false,
-      lineTension: 0,
-      backgroundColor: "white",
-      borderColor: "blue",
-      data: [19,18,17,19,18,19,16,17,18,16,17,17,18,19,19,18,19,16,17,18,19,18,18,17,17,16,17,17,17,17,18]
-    }]
-  },
-  options: {
-    legend: {display: false},
-    scales: {
-      yAxes: [{ticks: {min: 0, max:30}}],
-    }
-  }
-});
-                    </script>
-                    <p class="tm-list-item-description">Në qytetin e Fierit temperatura maksimale kap vlerën 28°C në datën 18, ndërsa temperatura minimale kap vlerën 16°C në datat 7, 10, 18 dhe 26.</p>
-
-                    <p class="tm-list-item-description">Temperatura mesatare maksimale është 23.45°C.<br>
-                      Temperatura mesatare minimale është 17.61°C.<br> Temperatura mesatare gjatë gjithë muajit është 20.53°C.                    </p>
+                    <p class="tm-list-item-description">4 shokë duan të hapin një restorant. Ata kanë shumë gjëra për të menduar dhe për të organizuar.Ata bënë një anketë pilot për moshën, gjininë dhe shumën e parave që këta persona ishin të gatshëm të paguajnë. Të shtyrë nga të dhënat që mblodhën nga anketa pilot nxënësit vendosën të zgjerojnë anketimin në një kampion prej 200 personash. Qëllimi është që në këtë kampion, raporti i njerëzve të grupmoshave të ndryshme të jetë i njejtë me raportin që ato kanë në të gjithëpopullsinë e qytetit.</p>
+                      <div style="display: flex; justify-content: space-between;">
+                        <div id="piechart"></div>
+                        <script type="text/javascript">
+                          // Load google charts
+                          google.charts.load('current', {'packages':['corechart']});
+                          google.charts.setOnLoadCallback(drawChart);
                       
-                    <p class="tm-list-item-description">Amplituda e datës 1 -> 23-19=4°C<br>Amplituda e datës 15 -> 26-19=7°C<br>Amplituda e datës 30 -> 24-17=7°C<br> Amplituda mujore -> 28-16=12°C</p> 
+                          // Draw the chart and set the chart values
+                          function drawChart() {
+                              var data = google.visualization.arrayToDataTable([
+                                  ['Task', 'Hours per Day'],
+                                  ['16-24', 38],
+                                  ['25-49', 94],
+                                  ['50-64', 36],
+                                  ['65+', 32]
+                              ]);
                       
-                    <p class="tm-list-item-description">Gjatë këtij muaji temperaturat minimale dhe maksimale kanë qenë relativisht afër me njëra-tjetrën. Temperaturat maksimale nuk uleshin poshtë 20°C. Temperaturat minimale qëndronin midis 16°C dhe 19°C. Ky muaj ka pasur vlera të temperaturave relativisht të përafërta me vitet e tjera.</p>
+                              // Optional; add a title and set the width and height of the chart
+                              var options = {
+                                  'title': 'Grupmoshat e 200 personave',
+                                  'width': 1000,
+                                  'height': 720,
+                                  'backgroundColor': 'transparent' // Set the background color to transparent
+                              };
+                      
+                              // Display the chart inside the <div> element with id="piechart"
+                              var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+                              chart.draw(data, options);
+                          }
+                        </script>
+                        <div id="piechart2"></div>
+                        <script type="text/javascript">
+                          // Load google charts
+                          google.charts.load('current', {'packages':['corechart']});
+                          google.charts.setOnLoadCallback(drawChart);
+                      
+                          // Draw the chart and set the chart values
+                          function drawChart() {
+                              var data = google.visualization.arrayToDataTable([
+                                  ['Task', 'Hours per Day'],
+                                  ['16-24', 67400],
+                                  ['25-49', 166100],
+                                  ['50-64', 64100],
+                                  ['65+', 58100]
+                              ]);
+                      
+                              // Optional; add a title and set the width and height of the chart
+                              var options = {
+                                  'title': 'Grupmoshat e të gjithë njerëzve në qytet',
+                                  'width': 1000,
+                                  'height': 720,
+                                  'backgroundColor': 'transparent' // Set the background color to transparent
+                              };
+                      
+                              // Display the chart inside the <div> element with id="piechart"
+                              var chart = new google.visualization.PieChart(document.getElementById('piechart2'));
+                              chart.draw(data, options);
+                          }
+                        </script>
+                      </div>
                   </div>
                 </div>
               </div>
@@ -101,52 +128,86 @@ new Chart("chartFirst", {
             <div id="biznes" class="tm-tab-content">
               <div class="tm-video-wrapper">
                 <video autoplay muted loop id="tm-video" width="1920" height="1080">
-                    <source src="video/nov.webm" type="video/mp4">
+                    <source src="video/finance.webm" type="video/mp4">
                 </video>
             </div>
               <div class="tm-list">
                 <div class="tm-list-item">          
                   <div class="tm-black-bg tm-list-item-text" style="width: 1500px; font-size: 160%;">
-                    <canvas id="chartSecond" style="width:1400px; margin: auto;"></canvas>
-                    <script>
-const xValues30 = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30];
+                    <p class="tm-list-item-description">Albi, Niki, Xhulieta dhe Rovena kanë përfunduar planin e biznesit dhe vendosin ta hapin restorantin e tyre pranë stacionit hekurudhor. Për të zgjedhur vendin ideal, ata duhet të marrin parasysh afërsinë me rrugën kryesore dhe me restorantet konkurrente. Ata fillojnë të planifikojnë edhe gjëra të tjera, si: materialet që do përdorin për promovimin, modelin dhe numrin e tavolinave që do të blejnë, si dhe vendosjen e kontakteve me furnitorë të mundshëm.</p>
+                    <p class="tm-list-item-description">Detyra 3: Rregullat e sigurimit<br>
+                      Resotranti duhet t’i zbatojë rregullat e sigurimit ndaj zjarrit.<br>
+                      a) x është numri i klientëve në restorant dhe y është numri i stafit në restorant. Shkruani dy inekuacione me x dhe y për të shprehur rregullat e sigurimit nga zjarri.<br>
+                      {x + y ≤ 32<br>
+                      {x ≤ 8y<br>
+                      b) Vizatoni boshtet Ox dhe Oy, për x nga 0 deri në 40 dhe y nga 0 deri në 40. Ngjyrosni zonën, pikat e së cilës kënaqin të dyja inekuacionet. <br>
+                      c) Përdorni inekuacionet tuaja dhe/ose grafikun për të gjetur numrin më të madh të klientëve që mund të hyjnë në restorant në çdo kohë.<br>
+                      Mund të hyjnë makismalisht 26 klientë në çdo kohë.</p>
+                      <div id="chart"></div>
 
+                      <script>
+                        // Generate data points for plotting the inequalities
+                        const x = [];
+                        const y = [];
+                        for (let i = 0; i <= 32; i++) {
+                          x.push(i);
+                          y.push(32 - i);
+                        }
+                    
+                        const trace1 = {
+                          x: x,
+                          y: y,
+                          mode: 'lines',
+                          name: 'x + y ≤ 32',
+                          line: { color: 'blue' },
+                        };
+                    
+                        const trace2 = {
+                          x: x,
+                          y: x.map((value) => value / 8),
+                          mode: 'lines',
+                          name: 'x ≤ 8y',
+                          line: { color: 'red' },
+                        };
+                    
+                        const data = [trace1, trace2];
+                    
+                        const layout = {
+                          title: 'Restorant Safety Rules',
+                          xaxis: { title: 'Number of Clients (x)' },
+                          yaxis: { title: 'Number of Staff (y)' },
+                          showlegend: true,
+                          hovermode: 'closest',
+                          paper_bgcolor: 'rgba(0,0,0,1)', // Set the background color to transparent
+                          plot_bgcolor: 'rgba(0,0,0,1)', // Set the plot background color to transparent
+                          modebar: { visible: false }, // Hide the modebar toolbar
+                          shapes: [
+                            // Shade the region where x + y ≤ 32
+                            {
+                              type: 'rect',
+                              xref: 'paper',
+                              yref: 'paper',
+                              x0: 0,
+                              y0: 0,
+                              x1: 1,
+                              y1: 1,
+                              fillcolor: 'rgba(0, 0, 255, 0.1)',
+                              line: { width: 0 },
+                            },
+                            // Shade the region where x ≤ 8y
+                            {
+                              type: 'path',
+                              path: `M0,0 L32,4 L32,32 L0,32 Z`,
+                              fillcolor: 'rgba(255, 0, 0, 0.1)',
+                              line: { width: 0 },
+                            },
+                          ],
+                        };
 
-new Chart("chartSecond", {
-  type: "line",
-  data: {
-    labels: xValues30,
-    datasets: [{
-      fill: false,
-      lineTension: 0,
-      backgroundColor: "white",
-      borderColor: "orange",
-      data: [19,18,20,21,19,18,17,18,19,18,19,19,20,18,20,19,19,20,19,16,15,16,16,15,15,15,14,13,14,15]
-    },{
-      fill: false,
-      lineTension: 0,
-      backgroundColor: "white",
-      borderColor: "blue",
-      data: [13,12,10,11,10,11,10,9,8,9,8,9,7,10,9,8,7,8,9,8,9,8,8,7,5,5,7,6,4,7]
-    }]
-  },
-  options: {
-    legend: {display: false},
-    scales: {
-      yAxes: [{ticks: {min: 0, max:30}}],
-    }
-  }
-});
-                    </script>
-                    <p class="tm-list-item-description">Në qytetin e Fierit temperatura maksimale kap vlerën 21°C në datën 4, ndërsa temperatura minimale kap vlerën 4°C në datën 29.</p>
-
-                    <p class="tm-list-item-description">Temperatura mesatare maksimale është 17.47°C.<br>
-                    Temperatura mesatare minimale është 8.4°C.<br> Temperatura mesatare gjatë gjithë muajit është 12.94°C.</p>
-                      
-                    <p class="tm-list-item-description">Amplituda e datës 1 -> 19-13=6°C<br>Amplituda e datës 15 -> 20-9=11°C<br>Amplituda e datës 30 -> 15-7=8°C <br> Amplituda mujore -> 21-4=17°C</p> 
-                      
-                    <p class="tm-list-item-description">Gjatë këtij muaji temperaturat minimale dhe maksimale kanë qenë pak larg me njëra tjetrën. Temperaturat maksimale uleshin me sa më shumë ditë kalonin. 
-                      Temperaturat minimale ndoqën ato maksimale me uljen e tyre. Ky muaj ka pasur vlera të temperaturave relativisht të përafërta me vitet e tjera. </p>
+                    
+                        Plotly.newPlot('chart', data, layout);
+                      </script>
+                    
                   </div>
                 </div>
               </div>
@@ -154,7 +215,7 @@ new Chart("chartSecond", {
             <div id="projekt" class="tm-tab-content">
               <div class="tm-video-wrapper">
                 <video autoplay muted loop id="tm-video" width="1920" height="1080">
-                    <source src="video/may.mp4" type="video/mp4">
+                    <source src="video/data.webm" type="video/mp4">
                 </video>
             </div>
               <div class="tm-list">
